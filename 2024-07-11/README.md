@@ -1,61 +1,53 @@
-1. 함수 표현식
+2025-07-11 TIL (Today I Learned)
+ 오늘 배운 것 요약
+함수 선언/표현식 차이 이해
 
-const add = function(a, b) {
+함수 호출, 매개변수, 반환값
+
+배열 메서드(filter, map, reduce 등) 실전 활용
+
+객체/배열 데이터 가공 및 중복 제거
+
+코드 사고 흐름 익히기
+
+1. 함수(Function) 기본
+▪️ 함수 선언 vs 함수 표현식
+
+// 함수 선언
+function add(a, b) {
   return a + b;
 }
-console.log(add(3, 5)); // 8
-함수 선언 vs 함수 표현식 차이
 
-함수를 변수에 할당해서 사용할 수 있음
-
-2. 함수 호출
-
-function greeting() {
-  console.log("Hello world");
-}
-greeting(); // 함수 호출해야 실제 동작 실행
-함수 정의만 하면 실행 안 됨 → 반드시 호출해야 결과 출력
-
-3. 매개변수 & 반환값
+// 함수 표현식
+const add = function(a, b) {
+  return a + b;
+};
+▪️ 함수 호출/매개변수/return
 
 function highlight(message) {
   return message + "!";
 }
-console.log(highlight("안녕하세요")); // "안녕하세요!"
-매개변수 활용
-
-반환값(return) 사용법
-
-4. 배열/객체 활용
-1) 배열에서 조건에 맞는 요소 찾기/필터링
-filter, find
-
+console.log(highlight("안녕하세요")); // 결과: "안녕하세요!"
+2. 배열과 객체 데이터 다루기
+▪️ 배열에서 조건에 맞는 데이터 찾기 (filter)
 
 const users = [
   { name: '철수', age: 25 },
   { name: '영희', age: 34 },
   { name: '민수', age: 29 }
 ];
-const result = users.filter(user => user.age > 30);
-// [{ name: '영희', age: 34 }]
-2) 배열 요소 가공 - map
+const over30 = users.filter(user => user.age > 30);
+// 결과: [{ name: '영희', age: 34 }]
+▪️ 배열에서 원하는 값만 뽑아오기 (map)
 
 const names = users.map(user => user.name);
-// ['철수', '영희', '민수']
-3) 배열에서 합계/최대값 구하기 - reduce
+// 결과: ['철수', '영희', '민수']
+▪️ 배열의 값을 누적/합산하기 (reduce)
 
 const totalAge = users.reduce((sum, user) => sum + user.age, 0);
-// 25 + 34 + 29 = 88
-4) 객체로 변환, 그룹화
-
-const nameCount = users.reduce((acc, user) => {
-  acc[user.name] = (acc[user.name] || 0) + 1;
-  return acc;
-}, {});
-// { '철수': 1, '영희': 1, '민수': 1 }
-5. 배열/객체 중복 필터링
-특정 필드(name)가 중복된 객체는 제외
-
+// 결과: 88
+3. 객체/배열 중복 데이터 필터링
+▪️ 이름이 중복되는 객체 제외하기
 
 const users = [
   { name: '철수', age: 25 },
@@ -66,22 +58,24 @@ const users = [
   { name: '지수', age: 31 }
 ];
 
-const nameCount = users.reduce((acc, user)=> {
+const nameCount = users.reduce((acc, user) => {
   acc[user.name] = (acc[user.name] || 0) + 1;
   return acc;
 }, {});
 const unique = users.filter(user => nameCount[user.name] === 1);
-// [{ name: '철수', age: 25 }, { name: '영희', age: 34 }]
-6. 기타 문법/개념
-콜백 함수 이해
+// 결과: [{ name: '철수', age: 25 }, { name: '영희', age: 34 }]
+4. 오늘의 회고
+코딩은 사고의 흐름을 훈련하는 과정이라는 점을 실감
 
-filter/map/reduce 차이점 연습
+예제 문제 직접 풀면서 손에 익히는 게 효과적이라고 느낌
 
-함수의 호출, 매개변수, 반환 개념 정리
+궁금한 점은 바로 찾아가며 학습하는 것이 장기적으로 +ev
 
-오늘 배운 핵심
-함수(정의/호출/표현식/매개변수/return)
+하루하루 누적되는 내용이 실무에서 큰 힘이 될 거라 기대
 
-배열/객체(filter/map/reduce 등 고차 함수 활용)
+ 내일 목표
+오늘 배운 배열/객체 다루는 법 더 연습하기
 
-실무에 자주 쓰는 데이터 가공법(찾기, 변환, 합계, 중복 제거 등)
+함수와 콜백 개념 복습
+
+궁금한 부분은 다시 예제 만들어 직접 확인하기
