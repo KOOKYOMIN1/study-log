@@ -38,7 +38,9 @@ function getTopStudents(students) {
 }
 
 console.log(getTopStudents(students)); // ["민지", "영수"]
- 배운 점 & 실수 정리
+
+```
+##  배운 점 & 실수 정리
 클래스 내에서 this.scores로 접근해야 함 (students 아님)
 
 메서드 실행 시 반드시 () 괄호 붙이기
